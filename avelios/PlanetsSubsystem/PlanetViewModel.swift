@@ -8,9 +8,19 @@
 import Foundation
 @Observable class PlanetViewModel {
     var planets = [Planet]()
-    var urlString = "https://swapi.dev/api/planets/"
+    var favouritePlanets = [Planet]()
+    
+    var currentPage=0
+    private var totalPages = 1
     
     func fetchPlanets() async {
+        if !canLoadMore() {
+            return print("Can't load more")
+        }
+        loadNextPage()
+        
+        var urlString = "https://swapi.dev/api/planets/?=page=\(currentPage)"
+         
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return
@@ -18,9 +28,20 @@ import Foundation
         do {
             let (data, _ ) = try await URLSession.shared.data(from: url)
             let decodedResponse = try JSONDecoder().decode(PlanetModel.self, from: data)
-            planets = decodedResponse.results
+            planets.append(contentsOf: decodedResponse.results)
+            totalPages = (decodedResponse.count! / decodedResponse.results.count) + 1
         } catch {
             print("Error: \(error)")
         }
+    }
+    
+    func loadNextPage() {
+        if canLoadMore() {
+            currentPage += 1
+            print(currentPage)
+        }
+    }
+    func canLoadMore() -> Bool {
+        return currentPage <= totalPages
     }
 }

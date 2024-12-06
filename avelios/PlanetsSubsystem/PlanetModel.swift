@@ -22,8 +22,13 @@ struct Planet: Codable, Identifiable, Hashable {
     let name: String
     let rotationPeriod: String
     let orbitalPeriod: String
+    let climate: String
+    let gravity: String
+    let terrain: String
+    let surfaceWater: String
+    let population: String
     
     enum CodingKeys: String, CodingKey {
-        case name, rotationPeriod = "rotation_period", orbitalPeriod = "orbital_period"
+        case name, rotationPeriod = "rotation_period", orbitalPeriod = "orbital_period", climate, gravity, terrain, surfaceWater = "surface_water", population
     }
 }
