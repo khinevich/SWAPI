@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct StarShipsModel: Codable {
     var id = UUID()
     let count: Int?
@@ -17,12 +18,19 @@ struct StarShipsModel: Codable {
     }
 }
 
-struct StarShip: Codable, Identifiable {
+struct StarShip: Codable, Identifiable, Hashable {
     var id = UUID()
     let name: String
     let manufacturer: String
+    let costInCredits: String
+    let length: String
+    let maxAtmospheringSpeed: String
+    let crew: String
+    let passengers: String
+    let consumables: String
+    let starShipClass: String
     
     enum CodingKeys: String, CodingKey {
-        case name, manufacturer
+        case name, manufacturer, costInCredits = "cost_in_credits", length, maxAtmospheringSpeed = "max_atmosphering_speed", crew, passengers, consumables, starShipClass = "starship_class"
     }
 }

@@ -12,11 +12,7 @@ struct PersonView: View {
     @Bindable var viewModel: PeopleViewModel
     var body: some View {
         ScrollView {
-            
-            
             VStack(spacing: 30) {
-                
-                // Title Section with Gender Background
                 VStack {
                     Text(person.name)
                         .font(.system(size: 34, weight: .bold, design: .rounded))
@@ -32,8 +28,6 @@ struct PersonView: View {
                         )
                 )
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
-                
-                // Table Layout Section
                 VStack(spacing: 15) {
                     ForEach(groupedAttributes, id: \.self) { row in
                         HStack(spacing: 15) {
@@ -53,8 +47,6 @@ struct PersonView: View {
                         .stroke(Color.gray.opacity(0.2), lineWidth: 1)
                 )
                 .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 5)
-                
-                // Homeworld Section
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Homeworld")
                         .font(.headline)
