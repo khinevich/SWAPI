@@ -20,7 +20,6 @@ struct PlanetsView: View {
                     if (selection==1) {
                         NavigationLink(value: planet) {
                             HStack(spacing: 15) {
-                                // Icon for Starship
                                 Image(systemName: "globe.americas")
                                     .font(.system(size: 24))
                                     .foregroundColor(.green)
@@ -40,7 +39,6 @@ struct PlanetsView: View {
                             .padding(.vertical, 8)
                         }.swipeActions(edge: .trailing) {
                             Button {
-                                print("removing")
                                 if let index = viewModel.favouritePlanets.firstIndex(
                                     of: planet
                                 ) {
@@ -55,12 +53,10 @@ struct PlanetsView: View {
                     } else {
                         NavigationLink(value: planet) {
                             HStack(spacing: 15) {
-                                // Icon for Starship
                                 Image(systemName: "globe.americas")
                                     .font(.system(size: 24))
                                     .foregroundColor(.green)
                                 
-                                // Starship Details
                                 VStack(alignment: .leading, spacing: 5) {
                                     Text(planet.name)
                                         .font(.headline)
@@ -75,7 +71,6 @@ struct PlanetsView: View {
                                 }
                                 Spacer()
 
-                                // Favorite Indicator
                                 if viewModel.isFavorite(planet: planet) {
                                     Image(systemName: "star.fill")
                                         .foregroundColor(.yellow)

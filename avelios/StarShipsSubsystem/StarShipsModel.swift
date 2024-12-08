@@ -47,20 +47,6 @@ struct StarShipsGraphQL: Identifiable, Hashable {
     let passengers: String
     let consumables: String
     let starShipClass: String
-//    {
-//        "__typename" = Starship;
-//        consumables = "15 hours";
-//        costInCredits = 102500;
-//        crew = 1;
-//        length = "7.9";
-//        manufacturers =     (
-//            "Kuat Systems Engineering"
-//        );
-//        maxAtmospheringSpeed = 1050;
-//        name = "V-wing";
-//        passengers = 0;
-//        starshipClass = starfighter;
-//    }
 }
 
 

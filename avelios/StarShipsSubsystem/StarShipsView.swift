@@ -42,7 +42,6 @@ struct StarShipsView: View {
                         .padding(.vertical, 8)
                     }.swipeActions(edge: .trailing) {
                         Button {
-                            print("removing")
                             if let index = viewModel.favouriteStarShips.firstIndex(
                                 of: starship
                             ) {

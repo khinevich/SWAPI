@@ -13,7 +13,6 @@ struct PlanetView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 30) {
-                // Title Section
                 VStack {
                     Text(planet.name)
                         .font(.system(size: 34, weight: .bold, design: .rounded))
@@ -24,11 +23,10 @@ struct PlanetView: View {
                 .frame(maxWidth: .infinity)
                 .background(
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.green) // Planets have a consistent theme color (green)
+                        .fill(Color.green)
                 )
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
 
-                // Attributes Section
                 VStack(spacing: 15) {
                     ForEach(groupedAttributes, id: \.self) { row in
                         HStack(spacing: 15) {
@@ -60,7 +58,6 @@ struct PlanetView: View {
         )
     }
 
-    // Group attributes into rows with 2 items each
     private var groupedAttributes: [[AttributeRowPlanet]] {
         [
             [
@@ -82,14 +79,12 @@ struct PlanetView: View {
     }
 }
 
-// Struct for managing attribute rows
 struct AttributeRowPlanet: Hashable {
     let icon: String
     let title: String
     let value: String
 }
 
-// Attribute Card for Each Attribute
 struct AttributeCardPlanet: View {
     let icon: String
     let title: String

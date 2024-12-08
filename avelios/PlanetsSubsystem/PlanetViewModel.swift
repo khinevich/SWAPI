@@ -37,8 +37,7 @@ import Foundation
     
     func loadNextPage() {
         if canLoadMore() {
-            currentPage += 1
-            print(currentPage)
+            currentPage += 1            
         }
     }
     func canLoadMore() -> Bool {

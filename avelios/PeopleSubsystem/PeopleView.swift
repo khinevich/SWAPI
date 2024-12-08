@@ -40,7 +40,7 @@ struct PeopleView: View {
                             .padding(.vertical, 8)
                         }.swipeActions(edge: .trailing) {
                             Button {
-                                print("removing")
+                                //print("removing")
                                 if let index = viewModel.favouritePeople.firstIndex(
                                     of: person
                                 ) {
@@ -69,15 +69,15 @@ struct PeopleView: View {
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
                                 }
-                                Spacer()
                                 
-                                // Favorite Indicator
+                                Spacer()
                                 if viewModel.isFavorite(person: person) {
                                     Image(systemName: "star.fill")
                                         .foregroundColor(.yellow)
                                         .font(.system(size: 20))
                                 }
                                 Spacer()
+                                
                             }
                             .padding(.vertical, 8)
                         }.swipeActions(edge: .leading) {

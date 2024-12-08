@@ -31,7 +31,6 @@ import SwiftUICore
             let (data, _ ) = try await URLSession.shared.data(from: url)
             let decodedResponse = try JSONDecoder().decode(PeopleModel.self, from: data)
             people.append(contentsOf: decodedResponse.results)
-            print(people)
             totalPages = (decodedResponse.count! / decodedResponse.results.count) + 1
             print("Total Pages \(totalPages)")
         } catch {
@@ -42,7 +41,6 @@ import SwiftUICore
     func loadNextPage() {
         if canLoadMore() {
             currentPage += 1
-            print(currentPage)
         }
     }
     func canLoadMore() -> Bool {

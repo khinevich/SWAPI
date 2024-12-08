@@ -65,12 +65,10 @@ import SWAPI
                 print("GraphQL Fetch Error: \(error)")
             }
         }
-        print(self.starShipsGraphQL)
     }
     func loadNextPage() {
         if canLoadMore() {
             currentPage += 1
-            print(currentPage)
         }
     }
     func canLoadMore() -> Bool {

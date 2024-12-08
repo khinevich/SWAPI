@@ -88,7 +88,6 @@ struct PersonView: View {
         )
     }
 
-    // Group attributes into rows with 2 items each
     private var groupedAttributes: [[AttributeRow]] {
         [
             [
@@ -107,7 +106,6 @@ struct PersonView: View {
     }
 }
 
-// Attribute Card for Each Attribute
 struct AttributeCard: View {
     let icon: String
     let title: String
@@ -143,7 +141,6 @@ struct AttributeCard: View {
     }
 }
 
-// Struct for managing attribute rows
 struct AttributeRow: Hashable {
     let icon: String
     let title: String

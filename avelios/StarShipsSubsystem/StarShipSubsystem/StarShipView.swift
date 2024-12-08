@@ -14,7 +14,6 @@ struct StarShipView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 30) {
-                // Title Section
                 VStack {
                     Text(starship.name)
                         .font(.system(size: 34, weight: .bold, design: .rounded))
@@ -29,7 +28,6 @@ struct StarShipView: View {
                 )
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
 
-                // Attributes Section
                 VStack(spacing: 15) {
                     ForEach(groupedAttributes, id: \.self) { row in
                         HStack(spacing: 15) {
@@ -61,7 +59,6 @@ struct StarShipView: View {
         )
     }
 
-    // Group attributes into rows with 2 items each
     private var groupedAttributes: [[AttributeRowShip]] {
         [
             [
@@ -84,14 +81,12 @@ struct StarShipView: View {
     }
 }
 
-// Struct for managing attribute rows
 struct AttributeRowShip: Hashable {
     let icon: String
     let title: String
     let value: String
 }
 
-// Attribute Card for Each Attribute
 struct AttributeCardShip: View {
     let icon: String
     let title: String
