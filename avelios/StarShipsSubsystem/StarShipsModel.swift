@@ -18,6 +18,7 @@ struct StarShipsModel: Codable {
     }
 }
 
+
 struct StarShip: Codable, Identifiable, Hashable {
     var id = UUID()
     let name: String
@@ -34,3 +35,32 @@ struct StarShip: Codable, Identifiable, Hashable {
         case name, manufacturer, costInCredits = "cost_in_credits", length, maxAtmospheringSpeed = "max_atmosphering_speed", crew, passengers, consumables, starShipClass = "starship_class"
     }
 }
+
+struct StarShipsGraphQL: Identifiable, Hashable {
+    var id = UUID()
+    let name: String
+    let manufacturers: String
+    let costInCredits: String
+    let length: String
+    let maxAtmospheringSpeed: String
+    let crew: String
+    let passengers: String
+    let consumables: String
+    let starShipClass: String
+//    {
+//        "__typename" = Starship;
+//        consumables = "15 hours";
+//        costInCredits = 102500;
+//        crew = 1;
+//        length = "7.9";
+//        manufacturers =     (
+//            "Kuat Systems Engineering"
+//        );
+//        maxAtmospheringSpeed = 1050;
+//        name = "V-wing";
+//        passengers = 0;
+//        starshipClass = starfighter;
+//    }
+}
+
+

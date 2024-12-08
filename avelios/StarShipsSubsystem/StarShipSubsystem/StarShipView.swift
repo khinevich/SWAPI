@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct StarShipView: View {
-    let starship: StarShip
+    //let starship: StarShip
+    let starship: StarShipsGraphQL
 
     var body: some View {
         ScrollView {
@@ -64,7 +65,7 @@ struct StarShipView: View {
     private var groupedAttributes: [[AttributeRowShip]] {
         [
             [
-                AttributeRowShip(icon: "building.2.crop.circle", title: "Manufacturer", value: starship.manufacturer),
+                AttributeRowShip(icon: "building.2.crop.circle", title: "Manufacturer", value: starship.manufacturers),
                 AttributeRowShip(icon: "dollarsign.circle", title: "Cost", value: starship.costInCredits.isEmpty ? "Unknown" : "\(starship.costInCredits) credits")
             ],
             [
@@ -128,15 +129,17 @@ struct AttributeCardShip: View {
 
 #Preview {
     StarShipView(
-        starship: StarShip(
+        starship: StarShipsGraphQL(
             id: UUID(),
             name: "Millennium Falcon",
-            manufacturer: "Corellian Engineering Corporation",
+            //model: "Desroyer",
+            manufacturers: "Corellian Engineering Corporation",
             costInCredits: "100000",
             length: "34.37",
             maxAtmospheringSpeed: "1050",
             crew: "4",
             passengers: "6",
+            //cargoCapacity: "1000people",
             consumables: "2 months",
             starShipClass: "Light Freighter"
         )

@@ -24,8 +24,6 @@ struct PlanetsView: View {
                                 Image(systemName: "globe.americas")
                                     .font(.system(size: 24))
                                     .foregroundColor(.green)
-                                
-                                // Starship Details
                                 VStack(alignment: .leading, spacing: 5) {
                                     Text(planet.name)
                                         .font(.headline)
@@ -50,7 +48,7 @@ struct PlanetsView: View {
                                         .remove(at: index)
                                 }
                             } label: {
-                                Label("Subtract", systemImage: "minus.circle")
+                                Label("Remove from Favorites", systemImage: "minus.circle")
                             }
                             .tint(.red)
                         }
@@ -75,19 +73,32 @@ struct PlanetsView: View {
                                     .foregroundColor(.secondary)
                                     
                                 }
+                                Spacer()
+
+                                // Favorite Indicator
+                                if viewModel.isFavorite(planet: planet) {
+                                    Image(systemName: "star.fill")
+                                        .foregroundColor(.yellow)
+                                        .font(.system(size: 20))
+                                }
+                                Spacer()
                             }
                             .padding(.vertical, 8)
-                        }.swipeActions(edge: .leading) {
+                        }
+                        .swipeActions(edge: .leading) {
                             Button {
-                                print("adding")
-                                viewModel.favouritePlanets.append(planet)
+                                if viewModel.isFavorite(planet: planet) {
+                                    viewModel.favouritePlanets.removeAll { $0.id == planet.id }
+                                } else {
+                                    viewModel.favouritePlanets.append(planet)
+                                }
                             } label: {
                                 Label(
-                                    "Add to favourites",
-                                    systemImage: "plus.circle"
+                                    viewModel.isFavorite(planet: planet) ? "Remove from Favorites" : "Add to Favorites",
+                                    systemImage: viewModel.isFavorite(planet: planet) ? "star.slash.fill" : "star.fill"
                                 )
                             }
-                            .tint(.green)
+                            .tint(viewModel.isFavorite(planet: planet) ? .red : .green)
                         }
                     }
                 }
@@ -100,14 +111,14 @@ struct PlanetsView: View {
                         })
                 }
             }
-            .onAppear{
-                Task {
-                    if loadedOnce == false && selection==0 {
-                        await viewModel.fetchPlanets()
-                        loadedOnce = true
-                    }
-                }
-            }
+//            .onAppear{
+//                Task {
+//                    if loadedOnce == false && selection==0 {
+//                        await viewModel.fetchPlanets()
+//                        loadedOnce = true
+//                    }
+//                }
+//            }
             .navigationTitle("Planets")
             .navigationBarItems(trailing:
                                     Picker("filter", selection: $selection) {

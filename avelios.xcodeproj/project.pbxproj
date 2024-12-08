@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		51D9E7AA2D05DEB9008338AD /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 51D9E7A92D05DEB9008338AD /* Apollo */; };
+		51D9E7B62D05E727008338AD /* SWAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 51D9E7B52D05E727008338AD /* SWAPI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		514879412CFF9014005254D8 /* avelios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = avelios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51D9E7AA2D05DEB9008338AD /* Apollo in Frameworks */,
+				51D9E7B62D05E727008338AD /* SWAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +72,8 @@
 			);
 			name = avelios;
 			packageProductDependencies = (
+				51D9E7A92D05DEB9008338AD /* Apollo */,
+				51D9E7B52D05E727008338AD /* SWAPI */,
 			);
 			productName = avelios;
 			productReference = 514879412CFF9014005254D8 /* avelios.app */;
@@ -94,6 +103,10 @@
 			);
 			mainGroup = 514879382CFF9014005254D8;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				51D9E7A82D05DEB9008338AD /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				51D9E7B42D05E727008338AD /* XCLocalSwiftPackageReference "SWAPI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 514879422CFF9014005254D8 /* Products */;
 			projectDirPath = "";
@@ -330,6 +343,36 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		51D9E7B42D05E727008338AD /* XCLocalSwiftPackageReference "SWAPI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = SWAPI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		51D9E7A82D05DEB9008338AD /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		51D9E7A92D05DEB9008338AD /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51D9E7A82D05DEB9008338AD /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		51D9E7B52D05E727008338AD /* SWAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SWAPI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 514879392CFF9014005254D8 /* Project object */;
 }

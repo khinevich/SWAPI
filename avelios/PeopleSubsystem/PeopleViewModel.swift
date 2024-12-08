@@ -68,4 +68,8 @@ import SwiftUICore
             return Color.gray
         }
     }
+    func isFavorite(person: Person) -> Bool {
+        favouritePeople.contains(person)
+        }
+
 }

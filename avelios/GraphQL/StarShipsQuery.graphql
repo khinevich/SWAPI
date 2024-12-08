@@ -1,0 +1,16 @@
+query StarShipsQuery {
+  allStarships {
+    totalCount
+    starships {
+      name
+      manufacturers
+      costInCredits
+      length
+      maxAtmospheringSpeed
+      crew
+      passengers
+      consumables
+      starshipClass
+    }
+  }
+}

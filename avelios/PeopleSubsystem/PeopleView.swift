@@ -31,7 +31,7 @@ struct PeopleView: View {
                                     Text(person.name)
                                         .font(.headline)
                                         .foregroundColor(.primary)
-
+                                    
                                     Text(person.gender.capitalized)
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
@@ -47,42 +47,53 @@ struct PeopleView: View {
                                     viewModel.favouritePeople.remove(at: index)
                                 }
                             } label: {
-                                Label("Subtract", systemImage: "minus.circle")
+                                Label("Remove from Favorites", systemImage: "minus.circle")
                             }
                             .tint(.red)
                         }
                     } else {
                         NavigationLink(value: person) {
                             HStack(spacing: 15) {
-                                    Image(
-                                        systemName: viewModel.logo(gender: person.gender.lowercased())
-                                    )
-                                    .font(.system(size: 24))
-                                    .foregroundColor(viewModel.personColor(gender: person.gender.lowercased())
-                                                     )
+                                Image(
+                                    systemName: viewModel.logo(gender: person.gender.lowercased())
+                                )
+                                .font(.system(size: 24))
+                                .foregroundColor(viewModel.personColor(gender: person.gender.lowercased())
+                                )
                                 VStack(alignment: .leading, spacing: 5) {
                                     Text(person.name)
                                         .font(.headline)
                                         .foregroundColor(.primary)
-
+                                    
                                     Text(person.gender.capitalized)
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
                                 }
+                                Spacer()
+                                
+                                // Favorite Indicator
+                                if viewModel.isFavorite(person: person) {
+                                    Image(systemName: "star.fill")
+                                        .foregroundColor(.yellow)
+                                        .font(.system(size: 20))
+                                }
+                                Spacer()
                             }
                             .padding(.vertical, 8)
-                        }
-                        .swipeActions(edge: .leading) {
+                        }.swipeActions(edge: .leading) {
                             Button {
-                                print("adding")
-                                viewModel.favouritePeople.append(person)
+                                if viewModel.isFavorite(person: person) {
+                                    viewModel.favouritePeople.removeAll { $0.id == person.id }
+                                } else {
+                                    viewModel.favouritePeople.append(person)
+                                }
                             } label: {
                                 Label(
-                                    "Add to favourites",
-                                    systemImage: "plus.circle"
+                                    viewModel.isFavorite(person: person) ? "Remove from Favorites" : "Add to Favorites",
+                                    systemImage: viewModel.isFavorite(person: person) ? "star.slash.fill" : "star.fill"
                                 )
                             }
-                            .tint(.green)
+                            .tint(viewModel.isFavorite(person: person) ? .red : .green)
                         }
                     }
                 }
@@ -95,14 +106,14 @@ struct PeopleView: View {
                         })
                 }
             }
-            .onAppear{
-                Task {
-                    if loadedOnce == false && selection==0 {
-                        await viewModel.fetchPeople()
-                        loadedOnce = true
-                    }
-                }
-            }
+            //            .onAppear{
+            //                Task {
+            //                    if loadedOnce == false && selection==0 {
+            //                        await viewModel.fetchPeople()
+            //                        loadedOnce = true
+            //                    }
+            //                }
+            //            }
             .navigationBarTitle("Star Wars Characters")
             .navigationBarItems(trailing:
                                     Picker("filter", selection: $selection) {

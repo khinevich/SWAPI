@@ -44,4 +44,7 @@ import Foundation
     func canLoadMore() -> Bool {
         return currentPage <= totalPages
     }
+    func isFavorite(planet: Planet) -> Bool {
+        favouritePlanets.contains(planet)
+        }
 }
