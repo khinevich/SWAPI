@@ -40,7 +40,6 @@ struct PeopleView: View {
                             .padding(.vertical, 8)
                         }.swipeActions(edge: .trailing) {
                             Button {
-                                //print("removing")
                                 if let index = viewModel.favouritePeople.firstIndex(
                                     of: person
                                 ) {
@@ -106,14 +105,6 @@ struct PeopleView: View {
                         })
                 }
             }
-            //            .onAppear{
-            //                Task {
-            //                    if loadedOnce == false && selection==0 {
-            //                        await viewModel.fetchPeople()
-            //                        loadedOnce = true
-            //                    }
-            //                }
-            //            }
             .navigationBarTitle("Star Wars Characters")
             .navigationBarItems(trailing:
                                     Picker("filter", selection: $selection) {

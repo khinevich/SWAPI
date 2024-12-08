@@ -1,0 +1,5 @@
+query PlanetQuery($planetId: ID) {
+  planet(planetID: $planetId) {
+    name
+  }
+}

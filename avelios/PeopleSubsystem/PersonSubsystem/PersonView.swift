@@ -56,7 +56,7 @@ struct PersonView: View {
                         HStack {
                             Image(systemName: "globe")
                                 .foregroundColor(.blue)
-                            Text(person.homeworld)
+                            Text(viewModel.planetName)
                                 .font(.body)
                                 .fontWeight(.semibold)
                                 .foregroundColor(.blue)
@@ -70,6 +70,7 @@ struct PersonView: View {
                         )
                     }
                 }
+                .frame(maxWidth: .infinity)
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 20)
@@ -80,6 +81,11 @@ struct PersonView: View {
                 Spacer()
             }
             .padding()
+            .onAppear {
+                Task {
+                    await viewModel.fetchPlanetName(from: person.homeworld)
+                }
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
         .background(
@@ -87,7 +93,7 @@ struct PersonView: View {
                 .edgesIgnoringSafeArea(.all)
         )
     }
-
+    
     private var groupedAttributes: [[AttributeRow]] {
         [
             [
@@ -110,7 +116,7 @@ struct AttributeCard: View {
     let icon: String
     let title: String
     let value: String
-
+    
     var body: some View {
         VStack(spacing: 10) {
             Image(systemName: icon)
@@ -121,12 +127,12 @@ struct AttributeCard: View {
                     Circle()
                         .fill(Color.blue.opacity(0.15))
                 )
-
+            
             Text(title)
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .foregroundColor(.primary)
-
+            
             Text(value)
                 .font(.body)
                 .foregroundColor(.secondary)

@@ -7,6 +7,9 @@
 
 import Foundation
 import SwiftUICore
+import Apollo
+import SWAPI
+
 
 @Observable class PeopleViewModel {
     var people = [Person]()
@@ -15,6 +18,7 @@ import SwiftUICore
     
     var currentPage = 0
     private var totalPages = 1
+    var planetName = ""
     
     func fetchPeople() async {
         if !canLoadMore() {
@@ -37,6 +41,32 @@ import SwiftUICore
             print("Error: \(error)")
         }
     }
+    
+    func fetchPlanetName(from link: String) async {
+            guard let planetID = link.split(separator: "/").last else {
+                print("Invalid planet URL")
+                return
+            }
+        let query = PlanetQuery(planetId: GraphQLNullable(stringLiteral: String(planetID)))
+
+            ApolloService.shared.client.fetch(query: query) { [weak self] result in
+                switch result {
+                case .success(let graphQLResult):
+                    if let name = graphQLResult.data?.planet?.name {
+                        self?.planetName = name
+                    } else {
+                        DispatchQueue.main.async {
+                            self?.planetName = "Unknown Planet"
+                        }
+                    }
+                case .failure(let error):
+                    print("GraphQL Fetch Error: \(error)")
+                    DispatchQueue.main.async {
+                        self?.planetName = "Error Fetching Planet"
+                    }
+                }
+            }
+        }
     
     func loadNextPage() {
         if canLoadMore() {
