@@ -24,7 +24,7 @@ struct StarShipView: View {
                 .frame(maxWidth: .infinity)
                 .background(
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.blue) // Starships have a consistent theme color (blue)
+                        .fill(Color.blue)
                 )
                 .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
 

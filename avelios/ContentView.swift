@@ -58,6 +58,7 @@ struct ContentView: View {
         .onAppear(perform: authenticate)
     
     }
+    
     func authenticate() {
         let context = LAContext()
         var error: NSError?
