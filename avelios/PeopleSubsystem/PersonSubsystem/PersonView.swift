@@ -70,7 +70,6 @@ struct PersonView: View {
                         )
                     }
                 }
-                .frame(maxWidth: .infinity)
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 20)
