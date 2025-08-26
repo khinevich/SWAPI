@@ -1,6 +1,5 @@
 //
 //  PersonView.swift
-//  avelios
 //
 //  Created by Mikhail Khinevich on 04.12.24.
 //

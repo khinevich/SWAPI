@@ -1,6 +1,5 @@
 //
 //  StarShipsModel.swift
-//  avelios
 //
 //  Created by Mikhail Khinevich on 03.12.24.
 //

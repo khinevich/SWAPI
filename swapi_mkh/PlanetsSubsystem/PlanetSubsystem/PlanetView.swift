@@ -1,6 +1,5 @@
 //
 //  PlanetView.swift
-//  avelios
 //
 //  Created by Mikhail Khinevich on 06.12.24.
 //

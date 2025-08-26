@@ -1,6 +1,5 @@
 //
 //  ApolloService.swift
-//  avelios
 //
 //  Created by Mikhail Khinevich on 08.12.24.
 //
