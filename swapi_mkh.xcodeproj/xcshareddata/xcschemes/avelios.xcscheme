@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "514879402CFF9014005254D8"
-               BuildableName = "avelios.app"
-               BlueprintName = "avelios"
-               ReferencedContainer = "container:avelios.xcodeproj">
+               BuildableName = "swapi_mkh.app"
+               BlueprintName = "swapi_mkh"
+               ReferencedContainer = "container:swapi_mkh.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "514879402CFF9014005254D8"
-            BuildableName = "avelios.app"
-            BlueprintName = "avelios"
-            ReferencedContainer = "container:avelios.xcodeproj">
+            BuildableName = "swapi_mkh.app"
+            BlueprintName = "swapi_mkh"
+            ReferencedContainer = "container:swapi_mkh.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "514879402CFF9014005254D8"
-            BuildableName = "avelios.app"
-            BlueprintName = "avelios"
-            ReferencedContainer = "container:avelios.xcodeproj">
+            BuildableName = "swapi_mkh.app"
+            BlueprintName = "swapi_mkh"
+            ReferencedContainer = "container:swapi_mkh.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
