@@ -1,0 +1,29 @@
+name: swapi_mkh
+#settings:
+#  DEVELOPMENT_TEAM:
+packages:
+    SWAPI:
+        path: ./SWAPI
+    Apollo:
+        url: https://github.com/apollographql/apollo-ios.git
+        from: 1.0.0
+    SQLite:
+        url: https://github.com/stephencelis/SQLite.swift.git
+        from: 0.15.3
+targets:
+  swapi_mkh:
+    dependencies:
+        - package: Apollo
+        - package: SQLite
+        - package: SWAPI
+    type: application
+    platform: iOS
+    deploymentTarget:
+      iOS: 18.0
+    sources: [swapi_mkh]
+    settings:
+      TARGETED_DEVICE_FAMILY: 1 # for visionOS: [1, 7]
+      PRODUCT_NAME: SW
+      INFOPLIST_FILE: swapi_mkh/Supporting/Info.plist
+      PRODUCT_BUNDLE_IDENTIFIER: com.khinevich.swapi
+    
